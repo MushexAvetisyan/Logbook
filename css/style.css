@@ -1,0 +1,1278 @@
+/* ===========================================================
+   Airport Logbook
+   Part 1
+=========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root{
+
+    --bg:#09111d;
+    --bg2:#101d2f;
+    --card:rgba(255,255,255,.08);
+
+    --glass:rgba(255,255,255,.06);
+
+    --border:rgba(255,255,255,.15);
+
+    --primary:#3b82f6;
+
+    --primaryHover:#2563eb;
+
+    --success:#16a34a;
+
+    --danger:#ef4444;
+
+    --warning:#f59e0b;
+
+    --text:#ffffff;
+
+    --text2:#cbd5e1;
+
+    --shadow:
+            0 20px 60px rgba(0,0,0,.45);
+
+    --radius:18px;
+
+    --transition:.25s ease;
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:linear-gradient(135deg,#08101d,#12213c,#08101d);
+
+    color:white;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/*=============================
+Background
+=============================*/
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-10;
+
+}
+
+.background::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    filter:blur(180px);
+
+    top:-150px;
+
+    left:-150px;
+
+    opacity:.35;
+
+    animation:moveOne 15s infinite alternate;
+
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    border-radius:50%;
+
+    background:#14b8a6;
+
+    right:-120px;
+
+    bottom:-120px;
+
+    filter:blur(180px);
+
+    opacity:.25;
+
+    animation:moveTwo 16s infinite alternate;
+
+}
+
+@keyframes moveOne{
+
+    from{
+
+        transform:translate(0,0);
+
+    }
+
+    to{
+
+        transform:translate(120px,80px);
+
+    }
+
+}
+
+@keyframes moveTwo{
+
+    from{
+
+        transform:translate(0,0);
+
+    }
+
+    to{
+
+        transform:translate(-120px,-90px);
+
+    }
+
+}
+
+/*=============================
+Header
+=============================*/
+
+header{
+
+    width:min(1400px,95%);
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:35px 0;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+.controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.controls h2{
+
+    width:250px;
+
+    text-align:center;
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+.controls button{
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:50%;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    font-size:22px;
+
+    transition:var(--transition);
+
+    border:1px solid var(--border);
+
+}
+
+.controls button:hover{
+
+    background:var(--primary);
+
+    transform:translateY(-3px);
+
+}
+
+/*=============================
+Main
+=============================*/
+
+main{
+
+    width:min(1400px,95%);
+
+    margin:auto;
+
+    padding-bottom:80px;
+
+}
+
+/*=============================
+Calendar
+=============================*/
+
+.calendar{
+
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(30px);
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
+}
+
+.weekdays{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    background:rgba(255,255,255,.04);
+
+}
+
+.weekdays div{
+
+    text-align:center;
+
+    padding:20px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    color:#94a3b8;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.days{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+}
+
+.day{
+
+    position:relative;
+
+    min-height:130px;
+
+    border-right:1px solid rgba(255,255,255,.05);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    padding:15px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    overflow:hidden;
+
+}
+
+.day:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+.day-number{
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.day.empty{
+
+    background:rgba(255,255,255,.015);
+
+    cursor:default;
+
+}
+
+.day.empty:hover{
+
+    background:rgba(255,255,255,.015);
+
+}
+
+/*=============================
+States
+=============================*/
+
+.day.today{
+
+    outline:2px solid #3b82f6;
+
+    outline-offset:-2px;
+
+}
+
+.day.has-data{
+
+    background:rgba(22,163,74,.20);
+
+}
+
+.day.has-data:hover{
+
+    background:rgba(22,163,74,.35);
+
+}
+
+/* маленькая точка */
+
+.day.has-data::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    right:12px;
+
+    top:12px;
+
+}
+
+/*=============================
+Modal
+=============================*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.65);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:100;
+
+}
+
+
+#createFlightsModal{
+
+    z-index:300;
+
+}
+
+.modal.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.modal-content{
+
+    width:min(900px,95%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:#101827;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+
+    animation:popup .25s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.92);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 30px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.modal-header h2{
+
+    font-size:24px;
+
+}
+
+#closeModal{
+
+    font-size:34px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+#closeModal:hover{
+
+    color:#ef4444;
+
+    transform:rotate(90deg);
+
+}
+
+
+/* ===========================================================
+   Form Section
+=========================================================== */
+
+form{
+
+    padding:30px;
+
+}
+
+
+/* Grid */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+
+/* Field */
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+.field label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#94a3b8;
+
+    letter-spacing:.4px;
+
+}
+
+
+/* Inputs */
+
+.field input{
+
+    width:100%;
+
+    height:48px;
+
+    padding:0 15px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    outline:none;
+
+    background:rgba(255,255,255,.06);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:.25s ease;
+
+}
+
+
+.field input::placeholder{
+
+    color:#64748b;
+
+}
+
+
+
+.field input:hover{
+
+    border-color:rgba(255,255,255,.3);
+
+}
+
+
+
+.field input:focus{
+
+    border-color:#3b82f6;
+
+    background:rgba(59,130,246,.12);
+
+    box-shadow:
+
+            0 0 0 3px rgba(59,130,246,.15);
+
+}
+
+
+/* Number arrows */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+
+    opacity:.6;
+
+}
+
+
+/* Time input */
+
+input[type="time"]{
+
+    cursor:pointer;
+
+}
+
+
+
+/*==============================
+Buttons
+==============================*/
+
+
+.buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:35px;
+
+}
+
+
+.buttons button{
+
+    flex:1;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+}
+
+
+/* Save */
+
+.save{
+
+    background:
+
+            linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #3b82f6
+            );
+
+    color:white;
+
+}
+
+
+.save:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+            0 15px 35px rgba(37,99,235,.35);
+
+}
+
+
+
+/* Delete */
+
+.delete{
+
+    background:
+
+            linear-gradient(
+                    135deg,
+                    #dc2626,
+                    #ef4444
+            );
+
+    color:white;
+
+}
+
+
+.delete:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+            0 15px 35px rgba(239,68,68,.35);
+
+}
+
+
+
+/*==============================
+Scrollbar
+==============================*/
+
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:#0f172a;
+
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:#334155;
+
+    border-radius:20px;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#3b82f6;
+
+}
+
+
+
+/*==============================
+Modal Responsive
+==============================*/
+
+
+.modal-content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+.modal-content::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+    border-radius:20px;
+
+}
+
+
+/*==============================
+Empty calendar cells
+==============================*/
+
+
+.day:nth-child(7n){
+
+    border-right:none;
+
+}
+
+
+
+/*==============================
+Flight info inside day
+==============================*/
+
+
+.flight-preview{
+
+    margin-top:15px;
+
+    padding:8px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.08);
+
+    font-size:13px;
+
+    color:#e2e8f0;
+
+}
+
+
+.flight-preview strong{
+
+    color:#60a5fa;
+
+}
+
+
+
+/*==============================
+Mobile Calendar
+==============================*/
+
+
+@media(max-width:900px){
+
+
+    header{
+
+        flex-direction:column;
+
+        gap:25px;
+
+    }
+
+
+    .controls h2{
+
+        width:auto;
+
+        font-size:22px;
+
+    }
+
+
+
+    .grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+
+    .day{
+
+        min-height:100px;
+
+        padding:10px;
+
+    }
+
+
+}
+
+
+
+/*==============================
+Small Phones
+==============================*/
+
+
+@media(max-width:600px){
+
+
+    header{
+
+        padding:20px 0;
+
+    }
+
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+
+
+    .controls{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+
+
+    .weekdays div{
+
+        padding:12px 5px;
+
+        font-size:12px;
+
+    }
+
+
+
+    .day{
+
+        min-height:75px;
+
+        padding:8px;
+
+    }
+
+
+
+    .day-number{
+
+        font-size:16px;
+
+    }
+
+
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    form{
+
+        padding:20px;
+
+    }
+
+
+
+    .buttons{
+
+        flex-direction:column;
+
+    }
+
+
+}
+
+
+
+/*==============================
+Animations
+==============================*/
+
+
+.day{
+
+    animation:dayAppear .35s ease backwards;
+
+}
+
+
+
+@keyframes dayAppear{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+/*==============================
+Loading effect
+==============================*/
+
+
+.loading{
+
+    pointer-events:none;
+
+    opacity:.5;
+
+}
+
+
+
+/*==============================
+Toast notification
+==============================*/
+
+
+.toast{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    background:#1e293b;
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:14px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+
+    animation:toastIn .3s ease;
+
+    z-index:999;
+
+}
+
+
+@keyframes toastIn{
+
+
+    from{
+
+        transform:translateY(30px);
+
+        opacity:0;
+
+    }
+
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+
+}
+
+
+
+/*==============================
+Dark input autofill fix
+==============================*/
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus{
+
+
+    -webkit-text-fill-color:white;
+
+    transition:background-color 9999s ease-in-out 0s;
+
+}
+
+/* =====================================
+Flight List
+===================================== */
+
+
+.flight-list{
+
+    padding:20px 30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+    overflow-y: scroll;
+    height: 15rem;
+}
+
+
+
+.flight-card{
+
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    padding:15px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+
+}
+
+
+
+.flight-card:hover{
+
+
+    background:rgba(59,130,246,.2);
+
+    transform:translateY(-2px);
+
+}
+
+
+
+.flight-card strong{
+
+    color:#60a5fa;
+
+}
+
+
+
+.add-flight{
+
+
+    margin:0 30px 20px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#16a34a;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+
+.add-flight:hover{
+
+
+    background:#15803d;
+
+}
+
+/* =================================
+Create Flights Modal
+================================= */
+
+
+.create-box{
+
+    width:400px;
+
+}
+
+
+
+.create-body{
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+
+.create-body label{
+
+    color:#cbd5e1;
+
+    font-weight:600;
+
+}
+
+
+
+.create-body input{
+
+
+    height:50px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    padding:0 15px;
+
+    font-size:18px;
+
+
+}
+
+
+
+.create-body input:focus{
+
+    outline:none;
+
+    border-color:#3b82f6;
+
+}
