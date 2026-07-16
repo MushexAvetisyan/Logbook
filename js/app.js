@@ -3,6 +3,12 @@
 // app.js
 // ======================================================
 
+const statusButtons =
+    document.querySelectorAll(".status-btn");
+
+const statusInput =
+    document.getElementById("status");
+
 const createDailyFlights =
     document.getElementById("createDailyFlights");
 
@@ -356,6 +362,24 @@ function loadFlight(index){
 
     });
 
+    if(flight.status){
+
+        statusButtons.forEach(btn=>{
+
+            btn.classList.remove("active");
+
+            if(btn.dataset.status===flight.status){
+
+                btn.classList.add("active");
+
+            }
+
+        });
+
+        statusInput.value = flight.status;
+
+    }
+
 
     form.scrollIntoView({
         behavior:"smooth"
@@ -546,6 +570,20 @@ function clearForm(){
     inputs.forEach(input=>{
 
         input.value="";
+
+    });
+
+    statusInput.value = "Scheduled";
+
+    statusButtons.forEach(btn=>{
+
+        btn.classList.remove("active");
+
+        if(btn.dataset.status==="Scheduled"){
+
+            btn.classList.add("active");
+
+        }
 
     });
 
@@ -790,6 +828,8 @@ createFlightsButton.onclick=function(){
 
             passboard:"",
 
+            passboardend:"",
+
             doorclosed:""
 
 
@@ -832,3 +872,21 @@ createFlightsButton.onclick=function(){
 
 
 }
+
+
+statusButtons.forEach(button=>{
+
+    button.onclick=function(){
+
+        statusButtons.forEach(btn=>
+            btn.classList.remove("active")
+        );
+
+        this.classList.add("active");
+
+        statusInput.value =
+            this.dataset.status;
+
+    };
+
+});

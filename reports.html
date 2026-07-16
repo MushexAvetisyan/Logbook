@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+
+    <title>Airport Reports</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="reports-header">
+
+    <h1>Airport Reports Dashboard</h1>
+
+    <a href="index.html" class="back-btn">
+
+        ← Back to Calendar
+
+    </a>
+
+</header>
+
+<section class="stats-grid">
+
+    <div class="stat-card">
+
+        <h3>Flights Today</h3>
+
+        <h2 id="todayFlights">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Flights This Month</h3>
+
+        <h2 id="monthFlights">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Passengers Today</h3>
+
+        <h2 id="todayPax">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Passengers This Month</h3>
+
+        <h2 id="monthPax">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Bags Today</h3>
+
+        <h2 id="todayBags">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Bags This Month</h3>
+
+        <h2 id="monthBags">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Average Turnaround</h3>
+
+        <h2 id="turnaround">0 min</h2>
+
+    </div>
+
+</section>
+
+<section class="chart-box">
+
+    <canvas id="flightChart"></canvas>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/reports.js"></script>
+
+</body>
+
+</html>

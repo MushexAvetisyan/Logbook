@@ -1276,3 +1276,85 @@ Create Flights Modal
     border-color:#3b82f6;
 
 }
+
+
+/* ======================================
+Flight Status
+====================================== */
+
+.status-buttons{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+
+}
+
+.status-btn{
+
+    flex:1;
+
+    min-width:120px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:#1e293b;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.status-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.status-btn.active{
+
+    box-shadow:0 0 0 3px rgba(255,255,255,.15);
+
+}
+
+/* Colors */
+
+.status-btn[data-status="Scheduled"].active{
+
+    background:#3b82f6;
+
+}
+
+.status-btn[data-status="Boarding"].active{
+
+    background:#16a34a;
+
+}
+
+.status-btn[data-status="Departed"].active{
+
+    background:#334155;
+
+}
+
+.status-btn[data-status="Delayed"].active{
+
+    background:#eab308;
+    color:black;
+
+}
+
+.status-btn[data-status="Cancelled"].active{
+
+    background:#dc2626;
+
+}
