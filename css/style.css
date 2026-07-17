@@ -1126,13 +1126,10 @@ Flight List
 
 .flight-list{
 
-    padding:20px 30px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     overflow-y: scroll;
     height: 15rem;
 }
@@ -1179,10 +1176,6 @@ Flight List
 
 
 .add-flight{
-
-
-    margin:0 30px 20px;
-
     height:45px;
 
     border:none;
@@ -1356,5 +1349,35 @@ Flight Status
 .status-btn[data-status="Cancelled"].active{
 
     background:#dc2626;
+
+}
+
+.export-btn{
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#16a34a;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.export-btn:hover{
+
+    background:#15803d;
 
 }

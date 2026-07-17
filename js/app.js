@@ -3,6 +3,21 @@
 // app.js
 // ======================================================
 
+const exportPdf =
+    document.getElementById("exportPdf");
+
+const backupJson =
+    document.getElementById("backupJson");
+
+const restoreJson =
+    document.getElementById("restoreJson");
+
+const restoreFile =
+    document.getElementById("restoreFile");
+
+const exportExcel =
+    document.getElementById("exportExcel");
+
 const statusButtons =
     document.querySelectorAll(".status-btn");
 
@@ -890,3 +905,362 @@ statusButtons.forEach(button=>{
     };
 
 });
+
+
+exportExcel.onclick = function () {
+
+    if (Object.keys(flights).length === 0) {
+
+        alert("No flights to export.");
+
+        return;
+
+    }
+
+    const rows = [];
+
+    Object.keys(flights).forEach(date => {
+
+        flights[date].forEach((flight, index) => {
+
+            rows.push({
+
+                Date: date,
+
+                Flight: flight.flight || "",
+
+                Aircraft: flight.aircraft || "",
+
+                CMD: flight.cmd || "",
+
+                Pax: Number(flight.pax || 0),
+
+                "No Show": Number(flight.noshow || 0),
+
+                Board: Number(flight.board || 0),
+
+                Bag: flight.bag || "",
+
+                "Delay Code": flight.delay || "",
+
+                WCHR: Number(flight.wchr || 0),
+
+                INAD: Number(flight.inad || 0),
+
+                PETC: Number(flight.petc || 0),
+
+                Fuel: flight.fuel || "",
+
+                "Fuel Time": flight.fueltime || "",
+
+                Land: flight.land || "",
+
+                Chocks: flight.chocks || "",
+
+                "Bag Load": flight.bagload || "",
+
+                "Boarding": flight.passboard || "",
+
+                "Board End": flight.passboardend || "",
+
+                "Door": flight.doorclosed || ""
+
+            });
+
+        });
+
+    });
+
+    const workbook = XLSX.utils.book_new();
+
+    const worksheet = XLSX.utils.json_to_sheet(rows);
+
+    XLSX.utils.book_append_sheet(
+
+        workbook,
+
+        worksheet,
+
+        "Flights"
+
+    );
+
+    XLSX.writeFile(
+
+        workbook,
+
+        "Airport_Logbook.xlsx"
+
+    );
+
+};
+
+backupJson.onclick = function () {
+
+    const data = JSON.stringify(
+
+        flights,
+
+        null,
+
+        2
+
+    );
+
+    const blob = new Blob(
+
+        [data],
+
+        {
+
+            type: "application/json"
+
+        }
+
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+
+    const now = new Date();
+
+    const fileName =
+
+        `Airport_Logbook_${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}.json`;
+
+    a.download = fileName;
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+};
+
+restoreJson.onclick = function(){
+
+    restoreFile.click();
+
+};
+
+restoreFile.addEventListener(
+
+    "change",
+
+    function(e){
+
+        const file = e.target.files[0];
+
+        if(!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload=function(event){
+
+            try{
+
+                const imported = JSON.parse(
+
+                    event.target.result
+
+                );
+
+                if(typeof imported!=="object"){
+
+                    throw new Error();
+
+                }
+
+                flights = imported;
+
+                localStorage.setItem(
+
+                    "airportFlights",
+
+                    JSON.stringify(flights)
+
+                );
+
+                renderCalendar();
+
+                if(selectedDate){
+
+                    renderFlightList();
+
+                }
+
+                alert("Backup restored successfully.");
+
+            }
+
+            catch{
+
+                alert("Invalid backup file.");
+
+            }
+
+        };
+
+        reader.readAsText(file);
+
+    });
+
+
+exportPdf.onclick = function () {
+
+    if (Object.keys(flights).length === 0) {
+
+        alert("No flights to export.");
+
+        return;
+
+    }
+
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF({
+
+        orientation: "landscape",
+
+        unit: "mm",
+
+        format: "a4"
+
+    });
+
+    doc.setFontSize(22);
+
+    doc.text(
+
+        "Airport Logbook",
+
+        14,
+
+        18
+
+    );
+
+    doc.setFontSize(11);
+
+    doc.text(
+
+        "Generated: " +
+
+        new Date().toLocaleString(),
+
+        14,
+
+        26
+
+    );
+
+    const body = [];
+
+    Object.keys(flights).forEach(date => {
+
+        flights[date].forEach((flight, index) => {
+
+            body.push([
+
+                date,
+
+                flight.flight || "",
+
+                flight.aircraft || "",
+
+                flight.cmd || "",
+
+                flight.pax || "",
+
+                flight.noshow || "",
+
+                flight.board || "",
+
+                flight.bag || "",
+
+                flight.delay || "",
+
+                flight.wchr || "",
+
+                flight.inad || "",
+
+                flight.petc || "",
+
+                flight.fuel || "",
+
+                flight.fueltime || "",
+
+                flight.land || "",
+
+                flight.chocks || "",
+
+                flight.bagload || "",
+
+                flight.passboard || "",
+
+                flight.passboardend || "",
+
+                flight.doorclosed || ""
+
+            ]);
+
+        });
+
+    });
+
+    doc.autoTable({
+
+        startY:35,
+
+        head:[[
+            "Date",
+            "Flight",
+            "Aircraft",
+            "CMD",
+            "Pax",
+            "NoShow",
+            "Board",
+            "Bag",
+            "Delay",
+            "WCHR",
+            "Inad",
+            "Pets",
+            "Fuel",
+            "FuelTime",
+            "Land",
+            "Chocks",
+            "Bagload",
+            "Board",
+            "BoardEnd",
+            "Door"
+        ]],
+
+        body,
+
+        styles:{
+
+            fontSize:8,
+
+            cellPadding:2
+
+        },
+
+        headStyles:{
+
+            fillColor:[41,128,185]
+
+        },
+
+        alternateRowStyles:{
+
+            fillColor:[245,245,245]
+
+        }
+
+    });
+
+    doc.save("Airport_Logbook.pdf");
+
+};

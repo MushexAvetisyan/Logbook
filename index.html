@@ -23,8 +23,6 @@
 
     </div>
 
-    <a href="/reports.html" target="_blank">Reports</a>
-
     <div class="controls">
 
         <button id="prevMonth">
@@ -42,6 +40,36 @@
         </button>
 
     </div>
+    <button id="exportExcel" class="export-btn">
+
+        Export Excel
+
+    </button>
+
+    <button id="exportPdf" class="export-btn">
+
+        Export PDF
+
+    </button>
+
+    <button id="backupJson" class="export-btn">
+
+        Backup JSON
+
+    </button>
+
+    <button id="restoreJson" class="export-btn">
+
+        Restore JSON
+
+    </button>
+
+    <input
+            type="file"
+            id="restoreFile"
+            accept=".json"
+            hidden
+    >
 
 </header>
 
@@ -140,22 +168,17 @@
         <div id="flightList" class="flight-list"></div>
 
 
-        <button
-                type="button"
-                id="addFlight"
-                class="add-flight">
-
-            + Add Flight
-
-        </button>
-
-        <button
-                id="createDailyFlights"
-                class="add-flight">
-
-            Create Daily Flights
-
-        </button>
+            <button
+                    type="button"
+                    id="addFlight"
+                    class="add-flight">
+                + Add Flight
+            </button>
+            <button
+                    id="createDailyFlights"
+                    class="add-flight">
+                Create Daily Flights
+            </button>
 
         <form id="flightForm">
 
@@ -275,18 +298,18 @@
                 </div>
 
                 <div class="field">
-                    <label>Pass Board</label>
+                    <label>Board</label>
                     <input type="time" id="passboard">
                 </div>
 
                 <div class="field">
-                    <label>Pass Board End</label>
+                    <label>Board End</label>
                     <input type="time" id="passboardend">
                 </div>
 
 
                 <div class="field">
-                    <label>Door Closed</label>
+                    <label>Door</label>
                     <input type="time" id="doorclosed">
                 </div>
 
@@ -324,6 +347,10 @@
 </div>
 
 <script src="js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable"></script>
 
 </body>
 </html>
