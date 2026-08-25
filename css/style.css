@@ -5,66 +5,65 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-:root{
+:root {
 
-    --bg:#09111d;
-    --bg2:#101d2f;
-    --card:rgba(255,255,255,.08);
+    --bg: #09111d;
+    --bg2: #101d2f;
+    --card: rgba(255, 255, 255, .08);
 
-    --glass:rgba(255,255,255,.06);
+    --glass: rgba(255, 255, 255, .06);
 
-    --border:rgba(255,255,255,.15);
+    --border: rgba(255, 255, 255, .15);
 
-    --primary:#3b82f6;
+    --primary: #3b82f6;
 
-    --primaryHover:#2563eb;
+    --primaryHover: #2563eb;
 
-    --success:#16a34a;
+    --success: #16a34a;
 
-    --danger:#ef4444;
+    --danger: #ef4444;
 
-    --warning:#f59e0b;
+    --warning: #f59e0b;
 
-    --text:#ffffff;
+    --text: #ffffff;
 
-    --text2:#cbd5e1;
+    --text2: #cbd5e1;
 
-    --shadow:
-            0 20px 60px rgba(0,0,0,.45);
+    --shadow: 0 20px 60px rgba(0, 0, 0, .45);
 
-    --radius:18px;
+    --radius: 18px;
 
-    --transition:.25s ease;
-
-}
-
-*{
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
+    --transition: .25s ease;
 
 }
 
-html{
+* {
 
-    scroll-behavior:smooth;
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
 
 }
 
-body{
+html {
 
-    font-family:"Inter",sans-serif;
+    scroll-behavior: smooth;
 
-    background:linear-gradient(135deg,#08101d,#12213c,#08101d);
+}
 
-    color:white;
+body {
 
-    min-height:100vh;
+    font-family: "Inter", sans-serif;
 
-    overflow-x:hidden;
+    background: linear-gradient(135deg, #08101d, #12213c, #08101d);
+
+    color: white;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
 
 }
 
@@ -72,97 +71,97 @@ body{
 Background
 =============================*/
 
-.background{
+.background {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    z-index:-10;
-
-}
-
-.background::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-
-    height:500px;
-
-    border-radius:50%;
-
-    background:#2563eb;
-
-    filter:blur(180px);
-
-    top:-150px;
-
-    left:-150px;
-
-    opacity:.35;
-
-    animation:moveOne 15s infinite alternate;
+    z-index: -10;
 
 }
 
-.background::after{
+.background::before {
 
-    content:"";
+    content: "";
 
-    position:absolute;
+    position: absolute;
 
-    width:450px;
+    width: 500px;
 
-    height:450px;
+    height: 500px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    background:#14b8a6;
+    background: #2563eb;
 
-    right:-120px;
+    filter: blur(180px);
 
-    bottom:-120px;
+    top: -150px;
 
-    filter:blur(180px);
+    left: -150px;
 
-    opacity:.25;
+    opacity: .35;
 
-    animation:moveTwo 16s infinite alternate;
+    animation: moveOne 15s infinite alternate;
 
 }
 
-@keyframes moveOne{
+.background::after {
 
-    from{
+    content: "";
 
-        transform:translate(0,0);
+    position: absolute;
+
+    width: 450px;
+
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: #14b8a6;
+
+    right: -120px;
+
+    bottom: -120px;
+
+    filter: blur(180px);
+
+    opacity: .25;
+
+    animation: moveTwo 16s infinite alternate;
+
+}
+
+@keyframes moveOne {
+
+    from {
+
+        transform: translate(0, 0);
 
     }
 
-    to{
+    to {
 
-        transform:translate(120px,80px);
+        transform: translate(120px, 80px);
 
     }
 
 }
 
-@keyframes moveTwo{
+@keyframes moveTwo {
 
-    from{
+    from {
 
-        transform:translate(0,0);
+        transform: translate(0, 0);
 
     }
 
-    to{
+    to {
 
-        transform:translate(-120px,-90px);
+        transform: translate(-120px, -90px);
 
     }
 
@@ -172,85 +171,85 @@ Background
 Header
 =============================*/
 
-header{
+header {
 
-    width:min(1400px,95%);
+    width: min(1400px, 95%);
 
-    margin:auto;
+    margin: auto;
 
-    display:flex;
+    display: flex;
 
-    justify-content:space-between;
+    justify-content: space-between;
 
-    align-items:center;
+    align-items: center;
 
-    padding:35px 0;
-
-}
-
-.logo{
-
-    font-size:28px;
-
-    font-weight:800;
-
-    letter-spacing:1px;
+    padding: 20px 0;
 
 }
 
-.controls{
+.logo {
 
-    display:flex;
+    font-size: 28px;
 
-    align-items:center;
+    font-weight: 800;
 
-    gap:20px;
-
-}
-
-.controls h2{
-
-    width:250px;
-
-    text-align:center;
-
-    font-size:26px;
-
-    font-weight:700;
+    letter-spacing: 1px;
 
 }
 
-.controls button{
+.controls {
 
-    width:55px;
+    display: flex;
 
-    height:55px;
+    align-items: center;
 
-    border:none;
-
-    cursor:pointer;
-
-    border-radius:50%;
-
-    background:var(--glass);
-
-    backdrop-filter:blur(20px);
-
-    color:white;
-
-    font-size:22px;
-
-    transition:var(--transition);
-
-    border:1px solid var(--border);
+    gap: 20px;
 
 }
 
-.controls button:hover{
+.controls h2 {
 
-    background:var(--primary);
+    width: 250px;
 
-    transform:translateY(-3px);
+    text-align: center;
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+}
+
+.controls button {
+
+    width: 55px;
+
+    height: 55px;
+
+    border: none;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    background: var(--glass);
+
+    backdrop-filter: blur(20px);
+
+    color: white;
+
+    font-size: 22px;
+
+    transition: var(--transition);
+
+    border: 1px solid var(--border);
+
+}
+
+.controls button:hover {
+
+    background: var(--primary);
+
+    transform: translateY(-3px);
 
 }
 
@@ -258,13 +257,13 @@ header{
 Main
 =============================*/
 
-main{
+main {
 
-    width:min(1400px,95%);
+    width: min(1400px, 95%);
 
-    margin:auto;
+    margin: auto;
 
-    padding-bottom:80px;
+    padding-bottom: 80px;
 
 }
 
@@ -272,101 +271,101 @@ main{
 Calendar
 =============================*/
 
-.calendar{
+.calendar {
 
-    background:var(--glass);
+    background: var(--glass);
 
-    border:1px solid var(--border);
+    border: 1px solid var(--border);
 
-    backdrop-filter:blur(30px);
+    backdrop-filter: blur(30px);
 
-    border-radius:22px;
+    border-radius: 22px;
 
-    box-shadow:var(--shadow);
+    box-shadow: var(--shadow);
 
-    overflow:hidden;
-
-}
-
-.weekdays{
-
-    display:grid;
-
-    grid-template-columns:repeat(7,1fr);
-
-    background:rgba(255,255,255,.04);
+    overflow: hidden;
 
 }
 
-.weekdays div{
+.weekdays {
 
-    text-align:center;
+    display: grid;
 
-    padding:20px;
+    grid-template-columns:repeat(7, 1fr);
 
-    font-weight:700;
-
-    letter-spacing:.5px;
-
-    color:#94a3b8;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .04);
 
 }
 
-.days{
+.weekdays div {
 
-    display:grid;
+    text-align: center;
 
-    grid-template-columns:repeat(7,1fr);
+    padding: 12px;
 
-}
+    font-weight: 700;
 
-.day{
+    letter-spacing: .5px;
 
-    position:relative;
+    color: #94a3b8;
 
-    min-height:130px;
-
-    border-right:1px solid rgba(255,255,255,.05);
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-
-    padding:15px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    overflow:hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
 
 }
 
-.day:hover{
+.days {
 
-    background:rgba(255,255,255,.05);
+    display: grid;
 
-}
-
-.day-number{
-
-    font-size:20px;
-
-    font-weight:700;
+    grid-template-columns:repeat(7, 1fr);
 
 }
 
-.day.empty{
+.day {
 
-    background:rgba(255,255,255,.015);
+    position: relative;
 
-    cursor:default;
+    min-height: 115px;
+
+    border-right: 1px solid rgba(255, 255, 255, .05);
+
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+
+    padding: 15px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    overflow: hidden;
 
 }
 
-.day.empty:hover{
+.day:hover {
 
-    background:rgba(255,255,255,.015);
+    background: rgba(255, 255, 255, .05);
+
+}
+
+.day-number {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+.day.empty {
+
+    background: rgba(255, 255, 255, .015);
+
+    cursor: default;
+
+}
+
+.day.empty:hover {
+
+    background: rgba(255, 255, 255, .015);
 
 }
 
@@ -374,45 +373,45 @@ Calendar
 States
 =============================*/
 
-.day.today{
+.day.today {
 
-    outline:2px solid #3b82f6;
+    outline: 2px solid #3b82f6;
 
-    outline-offset:-2px;
-
-}
-
-.day.has-data{
-
-    background:rgba(22,163,74,.20);
+    outline-offset: -2px;
 
 }
 
-.day.has-data:hover{
+.day.has-data {
 
-    background:rgba(22,163,74,.35);
+    background: rgba(22, 163, 74, .20);
+
+}
+
+.day.has-data:hover {
+
+    background: rgba(22, 163, 74, .35);
 
 }
 
 /* маленькая точка */
 
-.day.has-data::after{
+.day.has-data::after {
 
-    content:"";
+    content: "";
 
-    position:absolute;
+    position: absolute;
 
-    width:10px;
+    width: 10px;
 
-    height:10px;
+    height: 10px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    background:#22c55e;
+    background: #22c55e;
 
-    right:12px;
+    right: 12px;
 
-    top:12px;
+    top: 12px;
 
 }
 
@@ -420,120 +419,120 @@ States
 Modal
 =============================*/
 
-.modal{
+.modal {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    background:rgba(0,0,0,.65);
+    background: rgba(0, 0, 0, .65);
 
-    opacity:0;
+    opacity: 0;
 
-    visibility:hidden;
+    visibility: hidden;
 
-    transition:.3s;
+    transition: .3s;
 
-    z-index:100;
-
-}
-
-
-#createFlightsModal{
-
-    z-index:300;
+    z-index: 100;
 
 }
 
-.modal.active{
 
-    opacity:1;
+#createFlightsModal {
 
-    visibility:visible;
-
-}
-
-.modal-content{
-
-    width:min(900px,95%);
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    background:#101827;
-
-    border-radius:22px;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    box-shadow:0 30px 80px rgba(0,0,0,.5);
-
-    animation:popup .25s ease;
+    z-index: 300;
 
 }
 
-@keyframes popup{
+.modal.active {
 
-    from{
+    opacity: 1;
 
-        transform:scale(.92);
+    visibility: visible;
 
-        opacity:0;
+}
+
+.modal-content {
+
+    width: min(900px, 95%);
+
+    max-height: 90vh;
+
+    overflow: auto;
+
+    background: #101827;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(255, 255, 255, .1);
+
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+
+    animation: popup .25s ease;
+
+}
+
+@keyframes popup {
+
+    from {
+
+        transform: scale(.92);
+
+        opacity: 0;
 
     }
 
-    to{
+    to {
 
-        transform:scale(1);
+        transform: scale(1);
 
-        opacity:1;
+        opacity: 1;
 
     }
 
 }
 
-.modal-header{
+.modal-header {
 
-    display:flex;
+    display: flex;
 
-    justify-content:space-between;
+    justify-content: space-between;
 
-    align-items:center;
+    align-items: center;
 
-    padding:25px 30px;
+    padding: 0px 30px;
 
-    border-bottom:1px solid rgba(255,255,255,.08);
-
-}
-
-.modal-header h2{
-
-    font-size:24px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
 
 }
 
-#closeModal{
+.modal-header h2 {
 
-    font-size:34px;
-
-    cursor:pointer;
-
-    transition:.2s;
+    font-size: 24px;
 
 }
 
-#closeModal:hover{
+#closeModal {
 
-    color:#ef4444;
+    font-size: 34px;
 
-    transform:rotate(90deg);
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+#closeModal:hover {
+
+    color: #ef4444;
+
+    transform: rotate(90deg);
 
 }
 
@@ -542,104 +541,91 @@ Modal
    Form Section
 =========================================================== */
 
-form{
+form {
 
-    padding:30px;
+    padding: 30px;
 
 }
 
 
 /* Grid */
 
-.grid{
+.grid {
 
-    display:grid;
+    display: grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3, 1fr);
 
-    gap:20px;
+    gap: 5px;
 
 }
 
 
 /* Field */
 
-.field{
+.field {
 
-    display:flex;
+    display: flex;
 
-    flex-direction:column;
+    flex-direction: column;
 
-    gap:8px;
+    gap: 8px;
 
 }
 
 
-.field label{
+.field label {
 
-    font-size:14px;
+    font-size: 14px;
 
-    font-weight:600;
+    font-weight: 600;
 
-    color:#94a3b8;
+    color: #94a3b8;
 
-    letter-spacing:.4px;
+    letter-spacing: .4px;
 
 }
 
 
 /* Inputs */
 
-.field input{
+.field input {
 
-    width:100%;
-
-    height:48px;
-
-    padding:0 15px;
-
-    border-radius:12px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    outline:none;
-
-    background:rgba(255,255,255,.06);
-
-    color:white;
-
-    font-size:15px;
-
-    transition:.25s ease;
+    width: 95%;
+    height: 45px;
+    padding: 0px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    outline: none;
+    background: rgba(255, 255, 255, .06);
+    color: white;
+    font-size: 15px;
+    transition: .25s ease;
 
 }
 
 
-.field input::placeholder{
+.field input::placeholder {
 
-    color:#64748b;
-
-}
-
-
-
-.field input:hover{
-
-    border-color:rgba(255,255,255,.3);
+    color: #64748b;
 
 }
 
 
+.field input:hover {
 
-.field input:focus{
+    border-color: rgba(255, 255, 255, .3);
 
-    border-color:#3b82f6;
+}
 
-    background:rgba(59,130,246,.12);
 
-    box-shadow:
+.field input:focus {
 
-            0 0 0 3px rgba(59,130,246,.15);
+    border-color: #3b82f6;
+
+    background: rgba(59, 130, 246, .12);
+
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, .15);
 
 }
 
@@ -647,21 +633,20 @@ form{
 /* Number arrows */
 
 input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button{
+input[type="number"]::-webkit-outer-spin-button {
 
-    opacity:.6;
+    opacity: .6;
 
 }
 
 
 /* Time input */
 
-input[type="time"]{
+input[type="time"] {
 
-    cursor:pointer;
+    cursor: pointer;
 
 }
-
 
 
 /*==============================
@@ -669,94 +654,84 @@ Buttons
 ==============================*/
 
 
-.buttons{
+.buttons {
 
-    display:flex;
+    display: flex;
 
-    gap:15px;
+    gap: 15px;
 
-    margin-top:35px;
+    margin-top: 35px;
 
 }
 
 
-.buttons button{
+.buttons button {
 
-    flex:1;
+    flex: 1;
 
-    height:52px;
+    height: 52px;
 
-    border:none;
+    border: none;
 
-    border-radius:14px;
+    border-radius: 14px;
 
-    font-size:16px;
+    font-size: 16px;
 
-    font-weight:700;
+    font-weight: 700;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:.25s ease;
+    transition: .25s ease;
 
 }
 
 
 /* Save */
 
-.save{
+.save {
 
-    background:
+    background: linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+    );
 
-            linear-gradient(
-                    135deg,
-                    #2563eb,
-                    #3b82f6
-            );
-
-    color:white;
+    color: white;
 
 }
 
 
-.save:hover{
+.save:hover {
 
-    transform:translateY(-3px);
+    transform: translateY(-3px);
 
-    box-shadow:
-
-            0 15px 35px rgba(37,99,235,.35);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, .35);
 
 }
-
 
 
 /* Delete */
 
-.delete{
+.delete {
 
-    background:
+    background: linear-gradient(
+            135deg,
+            #dc2626,
+            #ef4444
+    );
 
-            linear-gradient(
-                    135deg,
-                    #dc2626,
-                    #ef4444
-            );
-
-    color:white;
+    color: white;
 
 }
 
 
-.delete:hover{
+.delete:hover {
 
-    transform:translateY(-3px);
+    transform: translateY(-3px);
 
-    box-shadow:
-
-            0 15px 35px rgba(239,68,68,.35);
+    box-shadow: 0 15px 35px rgba(239, 68, 68, .35);
 
 }
-
 
 
 /*==============================
@@ -764,35 +739,34 @@ Scrollbar
 ==============================*/
 
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
 
-    width:10px;
-
-}
-
-
-::-webkit-scrollbar-track{
-
-    background:#0f172a;
+    width: 10px;
 
 }
 
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-track {
 
-    background:#334155;
-
-    border-radius:20px;
+    background: #0f172a;
 
 }
 
 
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb {
 
-    background:#3b82f6;
+    background: #334155;
+
+    border-radius: 20px;
 
 }
 
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #3b82f6;
+
+}
 
 
 /*==============================
@@ -800,18 +774,18 @@ Modal Responsive
 ==============================*/
 
 
-.modal-content::-webkit-scrollbar{
+.modal-content::-webkit-scrollbar {
 
-    width:8px;
+    width: 8px;
 
 }
 
 
-.modal-content::-webkit-scrollbar-thumb{
+.modal-content::-webkit-scrollbar-thumb {
 
-    background:#475569;
+    background: #475569;
 
-    border-radius:20px;
+    border-radius: 20px;
 
 }
 
@@ -821,12 +795,11 @@ Empty calendar cells
 ==============================*/
 
 
-.day:nth-child(7n){
+.day:nth-child(7n) {
 
-    border-right:none;
+    border-right: none;
 
 }
-
 
 
 /*==============================
@@ -834,29 +807,28 @@ Flight info inside day
 ==============================*/
 
 
-.flight-preview{
+.flight-preview {
 
-    margin-top:15px;
+    margin-top: 15px;
 
-    padding:8px;
+    padding: 8px;
 
-    border-radius:10px;
+    border-radius: 10px;
 
-    background:rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
 
-    font-size:13px;
+    font-size: 13px;
 
-    color:#e2e8f0;
-
-}
-
-
-.flight-preview strong{
-
-    color:#60a5fa;
+    color: #e2e8f0;
 
 }
 
+
+.flight-preview strong {
+
+    color: #60a5fa;
+
+}
 
 
 /*==============================
@@ -864,47 +836,44 @@ Mobile Calendar
 ==============================*/
 
 
-@media(max-width:900px){
+@media (max-width: 900px) {
 
 
-    header{
+    header {
 
-        flex-direction:column;
+        flex-direction: column;
 
-        gap:25px;
-
-    }
-
-
-    .controls h2{
-
-        width:auto;
-
-        font-size:22px;
+        gap: 25px;
 
     }
 
 
+    .controls h2 {
 
-    .grid{
+        width: auto;
 
-        grid-template-columns:repeat(2,1fr);
+        font-size: 22px;
 
     }
 
 
+    .grid {
 
-    .day{
+        grid-template-columns:repeat(2, 1fr);
 
-        min-height:100px;
+    }
 
-        padding:10px;
+
+    .day {
+
+        min-height: 100px;
+
+        padding: 10px;
 
     }
 
 
 }
-
 
 
 /*==============================
@@ -912,87 +881,79 @@ Small Phones
 ==============================*/
 
 
-@media(max-width:600px){
+@media (max-width: 600px) {
 
 
-    header{
+    header {
 
-        padding:20px 0;
-
-    }
-
-
-    .logo{
-
-        font-size:22px;
+        padding: 20px 0;
 
     }
 
 
+    .logo {
 
-    .controls{
-
-        width:100%;
-
-        justify-content:center;
+        font-size: 22px;
 
     }
 
 
+    .controls {
 
-    .weekdays div{
+        width: 100%;
 
-        padding:12px 5px;
-
-        font-size:12px;
-
-    }
-
-
-
-    .day{
-
-        min-height:75px;
-
-        padding:8px;
+        justify-content: center;
 
     }
 
 
+    .weekdays div {
 
-    .day-number{
+        padding: 12px 5px;
 
-        font-size:16px;
+        font-size: 12px;
 
     }
 
 
+    .day {
 
-    .grid{
+        min-height: 75px;
+
+        padding: 8px;
+
+    }
+
+
+    .day-number {
+
+        font-size: 16px;
+
+    }
+
+
+    .grid {
 
         grid-template-columns:1fr;
 
     }
 
 
+    form {
 
-    form{
-
-        padding:20px;
+        padding: 20px;
 
     }
 
 
+    .buttons {
 
-    .buttons{
-
-        flex-direction:column;
+        flex-direction: column;
 
     }
 
 
 }
-
 
 
 /*==============================
@@ -1000,37 +961,35 @@ Animations
 ==============================*/
 
 
-.day{
+.day {
 
-    animation:dayAppear .35s ease backwards;
+    animation: dayAppear .35s ease backwards;
 
 }
 
 
+@keyframes dayAppear {
 
-@keyframes dayAppear{
 
+    from {
 
-    from{
+        opacity: 0;
 
-        opacity:0;
-
-        transform:translateY(10px);
+        transform: translateY(10px);
 
     }
 
 
-    to{
+    to {
 
-        opacity:1;
+        opacity: 1;
 
-        transform:translateY(0);
+        transform: translateY(0);
 
     }
 
 
 }
-
 
 
 /*==============================
@@ -1038,14 +997,13 @@ Loading effect
 ==============================*/
 
 
-.loading{
+.loading {
 
-    pointer-events:none;
+    pointer-events: none;
 
-    opacity:.5;
+    opacity: .5;
 
 }
-
 
 
 /*==============================
@@ -1053,54 +1011,53 @@ Toast notification
 ==============================*/
 
 
-.toast{
+.toast {
 
-    position:fixed;
+    position: fixed;
 
-    bottom:30px;
+    bottom: 30px;
 
-    right:30px;
+    right: 30px;
 
-    background:#1e293b;
+    background: #1e293b;
 
-    color:white;
+    color: white;
 
-    padding:15px 25px;
+    padding: 15px 25px;
 
-    border-radius:14px;
+    border-radius: 14px;
 
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
 
-    animation:toastIn .3s ease;
+    animation: toastIn .3s ease;
 
-    z-index:999;
+    z-index: 999;
 
 }
 
 
-@keyframes toastIn{
+@keyframes toastIn {
 
 
-    from{
+    from {
 
-        transform:translateY(30px);
+        transform: translateY(30px);
 
-        opacity:0;
+        opacity: 0;
 
     }
 
 
-    to{
+    to {
 
-        transform:translateY(0);
+        transform: translateY(0);
 
-        opacity:1;
+        opacity: 1;
 
     }
 
 
 }
-
 
 
 /*==============================
@@ -1110,12 +1067,12 @@ Dark input autofill fix
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus{
+input:-webkit-autofill:focus {
 
 
-    -webkit-text-fill-color:white;
+    -webkit-text-fill-color: white;
 
-    transition:background-color 9999s ease-in-out 0s;
+    transition: background-color 9999s ease-in-out 0s;
 
 }
 
@@ -1124,82 +1081,81 @@ Flight List
 ===================================== */
 
 
-.flight-list{
+.flight-list {
 
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     overflow-y: scroll;
-    height: 15rem;
+    height: 51rem;
+    position: absolute;
+    left: 88rem;
+    background: aliceblue;
+    bottom: 3rem;
 }
 
 
-
-.flight-card{
-
-
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    padding:15px;
-
-    border-radius:14px;
-
-    cursor:pointer;
-
-    transition:.25s;
+.flight-card {
 
 
-}
+    background: rgba(255, 255, 255, .06);
 
+    border: 1px solid rgba(255, 255, 255, .1);
 
+    padding: 15px;
 
-.flight-card:hover{
+    border-radius: 14px;
 
+    cursor: pointer;
 
-    background:rgba(59,130,246,.2);
+    transition: .25s;
 
-    transform:translateY(-2px);
 
 }
 
 
-
-.flight-card strong{
-
-    color:#60a5fa;
-
-}
+.flight-card:hover {
 
 
+    background: rgba(59, 130, 246, .2);
 
-.add-flight{
-    height:45px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#16a34a;
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:700;
-
-    cursor:pointer;
+    transform: translateY(-2px);
 
 }
 
 
+.flight-card strong {
 
-.add-flight:hover{
+    color: #60a5fa;
+
+}
 
 
-    background:#15803d;
+.add-flight {
+    height: 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #16a34a;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.add-flight:hover {
+
+
+    background: #15803d;
 
 }
 
@@ -1208,65 +1164,61 @@ Create Flights Modal
 ================================= */
 
 
-.create-box{
+.create-box {
 
-    width:400px;
-
-}
-
-
-
-.create-body{
-
-    padding:30px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:20px;
+    width: 400px;
 
 }
 
 
+.create-body {
 
-.create-body label{
+    padding: 30px;
 
-    color:#cbd5e1;
+    display: flex;
 
-    font-weight:600;
+    flex-direction: column;
 
-}
-
-
-
-.create-body input{
-
-
-    height:50px;
-
-    border-radius:12px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    background:rgba(255,255,255,.08);
-
-    color:white;
-
-    padding:0 15px;
-
-    font-size:18px;
-
+    gap: 20px;
 
 }
 
 
+.create-body label {
 
-.create-body input:focus{
+    color: #cbd5e1;
 
-    outline:none;
+    font-weight: 600;
 
-    border-color:#3b82f6;
+}
+
+
+.create-body input {
+
+
+    height: 50px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, .15);
+
+    background: rgba(255, 255, 255, .08);
+
+    color: white;
+
+    padding: 0 15px;
+
+    font-size: 18px;
+
+
+}
+
+
+.create-body input:focus {
+
+    outline: none;
+
+    border-color: #3b82f6;
 
 }
 
@@ -1275,109 +1227,109 @@ Create Flights Modal
 Flight Status
 ====================================== */
 
-.status-buttons{
+.status-buttons {
 
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-
-}
-
-.status-btn{
-
-    flex:1;
-
-    min-width:120px;
-
-    height:42px;
-
-    border:none;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-    background:#1e293b;
-
-    color:white;
-
-    font-weight:600;
-
-    transition:.25s;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 
 }
 
-.status-btn:hover{
+.status-btn {
 
-    transform:translateY(-2px);
+    flex: 1;
+
+    min-width: 120px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background: #1e293b;
+
+    color: white;
+
+    font-weight: 600;
+
+    transition: .25s;
 
 }
 
-.status-btn.active{
+.status-btn:hover {
 
-    box-shadow:0 0 0 3px rgba(255,255,255,.15);
+    transform: translateY(-2px);
+
+}
+
+.status-btn.active {
+
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .15);
 
 }
 
 /* Colors */
 
-.status-btn[data-status="Scheduled"].active{
+.status-btn[data-status="Scheduled"].active {
 
-    background:#3b82f6;
-
-}
-
-.status-btn[data-status="Boarding"].active{
-
-    background:#16a34a;
+    background: #3b82f6;
 
 }
 
-.status-btn[data-status="Departed"].active{
+.status-btn[data-status="Boarding"].active {
 
-    background:#334155;
-
-}
-
-.status-btn[data-status="Delayed"].active{
-
-    background:#eab308;
-    color:black;
+    background: #16a34a;
 
 }
 
-.status-btn[data-status="Cancelled"].active{
+.status-btn[data-status="Departed"].active {
 
-    background:#dc2626;
-
-}
-
-.export-btn{
-
-    height:48px;
-
-    padding:0 22px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#16a34a;
-
-    color:#fff;
-
-    font-size:15px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
+    background: #334155;
 
 }
 
-.export-btn:hover{
+.status-btn[data-status="Delayed"].active {
 
-    background:#15803d;
+    background: #eab308;
+    color: black;
+
+}
+
+.status-btn[data-status="Cancelled"].active {
+
+    background: #dc2626;
+
+}
+
+.export-btn {
+
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #16a34a;
+
+    color: #fff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.export-btn:hover {
+
+    background: #15803d;
 
 }
